@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Switch, Redirect, useParams } from "react-router-dom";
 import ColorPage from "./ColorPage";
 import ColorList from "./ColorList";
 import NewColorForm from "./NewColorForm";
 
 function Routes() {
-  const [colors, addColor] = useState(["red", "purple", "pink"]);
-
+  let colorsSaved = JSON.parse(localStorage.getItem("colors")) || [
+    "red",
+    "purple",
+    "pink",
+  ];
+  const [colors, addColor] = useState(colorsSaved);
+  useEffect(
+    () => localStorage.setItem("colors", JSON.stringify(colors)),
+    [colors]
+  );
   return (
     <Switch>
       <Route exact path="/colors">
