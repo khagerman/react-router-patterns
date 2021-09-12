@@ -3,19 +3,19 @@ import { Link } from "react-router-dom";
 
 function ColorList({ colors }) {
   return (
-    <header>
+    <div>
       <h1>Welcome to the color factory</h1>
-      <h3>
+      <h2>
         <Link to="/colors/new">Add a Color!</Link>
-      </h3>
-      <ul>
+      </h2>
+      <div>
         {colors.map((color) => (
-          <li key={color}>
+          <p key={color}>
             <Link to={`/colors/${color}`}>Show me {color}!</Link>
-          </li>
+          </p>
         ))}
-      </ul>
-    </header>
+      </div>
+    </div>
   );
 }
 

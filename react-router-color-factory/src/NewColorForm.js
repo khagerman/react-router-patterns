@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import "./NewColorForm.css";
 const NewColorForm = ({ addColor, colors }) => {
   const initialState = {
     color: "",
@@ -17,13 +18,13 @@ const NewColorForm = ({ addColor, colors }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { color } = formData;
-    addColor((colors) => [...colors, color]);
+    addColor((colors) => [color, ...colors]);
     setFormData(initialState);
     history.push("/colors");
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="NewColorForm" onSubmit={handleSubmit}>
       <label htmlFor="color">Add another color!</label>
       <input
         id="color"
